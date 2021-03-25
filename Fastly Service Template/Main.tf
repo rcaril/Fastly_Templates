@@ -14,7 +14,7 @@ provider "fastly" {
 
 # Create a Service
 resource "fastly_service_v1" "myservice" {
-  name = "API_Service"
+  name = var.serviceName
 
   domain {
     name    = var.domain1
@@ -22,9 +22,9 @@ resource "fastly_service_v1" "myservice" {
   }
 
   backend {
-    address = "ec2-3-214-228-20.compute-1.amazonaws.com"
-    name    = "AWS Instance"
-    port    = 80
+    address = var.backendAddr
+    name    = var.backendName
+    port    = var.backendPort
   }
 
   force_destroy = false

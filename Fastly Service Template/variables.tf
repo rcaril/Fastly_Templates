@@ -13,3 +13,11 @@ variable "domain3" {
 variable "domain4" {
     default = null
 }
+variable "backendAddr" {
+}
+variable "backendName" {
+}
+variable "backendPort" {
+}
+variable "serviceName" {
+}
