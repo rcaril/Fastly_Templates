@@ -1,4 +1,13 @@
 # Configure the Fastly Provider
+terraform {
+  required_providers {
+    fastly = {
+      source = "fastly/fastly"
+      version = "0.27.0"
+    }
+  }
+}
+
 provider "fastly" {
   api_key = var.key
 }
@@ -8,7 +17,7 @@ resource "fastly_service_v1" "myservice" {
   name = "API_Service"
 
   domain {
-    name    = "rcproject.com"
+    name    = var.domain1
     comment = "api test"
   }
 
@@ -19,5 +28,11 @@ resource "fastly_service_v1" "myservice" {
   }
 
   force_destroy = false
+
+    vcl {
+    name    = "my_custom_main_vcl"
+    content = "#Sample VCL"
+    main    = true
+  }
 }
 
