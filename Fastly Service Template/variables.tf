@@ -3,15 +3,12 @@
 variable "key" {
 }
 variable "domain1" {
+  default = null
+  type = string
 }
 variable "domain2" {
   default = null
-}
-variable "domain3" {
-    default = null
-}
-variable "domain4" {
-    default = null
+  type = string
 }
 variable "backendAddr" {
 }
